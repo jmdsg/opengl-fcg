@@ -3,7 +3,7 @@
 El objetivo principal de la elaboración de este tutorial es guiar a los estudiantes de la materia Fundamentos y Técnicas Computación Gráfica de la Universidad Central de Venezuela para el desarrollo de sus proyectos, aportando plantillas de proyecto y tips de importancia para el desarrollo rápido de los mismos. Este tutorial podria ser util a estudiantes de otras universidades o cualquier persona interesada en aprender conocimientos intermedios/avanzados de OpenGL.
 
 A lo largo del tutorial se usará `C++` y las siguientes bibliotecas: 
-* [OpenGL Core Generator](https://bitbucket.org/alfonse/glloadgen/wiki/Home) (Generador del core de OpenGL) Es un generador de un core de OpenGL especifico, esta escrito en el lenguaje de programación LUA.
+* [OpenGL Core Generator](https://bitbucket.org/alfonse/glloadgen/wiki/Home) (Generador del core de OpenGL) Es un generador de un core de OpenGL especifico con sus respectivas extensiones, esta escrito en el lenguaje de programación LUA.
 
 * [GLFW](http://www.glfw.org/) (Biblioteca Gráfica Para Ventanas) es ligera y multiplataforma, permite crear ventanas con el contexto de OpenGL y manejar diversos eventos relacionados a estas.
 
