@@ -30,5 +30,11 @@ Todos estos códigos se deben correr en Microsoft Visual Studio 2013 siguiendo l
 + Ir a: Project Properties -> Linker -> Input -> Additional Dependencies.
 + Pegar: OpenGL32.lib;glfw3dll.lib;AntTweakBar.lib;ILU.lib;ILUT.lib;DevIL.lib;
 
-#### Importante
-En la carpeta Assets\Libs deben encontrarse todos los libs especificados anteriormente menos el OpenGL32.lib.
+#### Aspectos importantes
++ En la carpeta Assets\Libs deben encontrarse todos los libs especificados anteriormente menos el OpenGL32.lib.
+
++ Todos las librerias de enlace dinámico `DLL` deben colocarse en la carpeta Debug específicamente al lado del ejecutable.
+
+### Formato para la entrega de proyectos
+
+* TODO
