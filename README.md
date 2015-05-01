@@ -11,7 +11,7 @@ A lo largo del tutorial se usará `C++` y las siguientes bibliotecas:
 
 * [GLM](http://glm.g-truc.net/0.9.6/index.html) (OpenGL Matemáticas) unicamente para  `C++`, provee diversas estructuras matemáticas y sus respectivas operaciones basadas en las de GLSL.
 
-* [DevIL](http://openil.sourceforge.net/) (Biblioteca para la carga de imágenes) Se usara para cargar las texturas necesarias a aplicar en los proyectos.
+* [DevIL](http://openil.sourceforge.net/) (Biblioteca para la carga de imágenes) Biblioteca escrita en `C++`, se usara para cargar las texturas necesarias a aplicar en los proyectos.
 
 ### Configuración de proyectos usando Microsoft Visual Studio 2013
 
