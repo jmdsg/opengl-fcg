@@ -48,4 +48,5 @@ Nuestra estructura de proyecto será sencilla, constara de dos partes:
 
 + Dentro de nuestro proyecto de VS 2013 tendremos una carpeta con el mismo nombre de nuestro proyecto, en su interior es donde nuestro IDE va a crear todos nuestros archivos `.h .cpp .hpp`, ahí lo primero que debemos hacer es crear una carpeta llamada `Assets`, esta carpeta va a contener varias carpetas adicionales, las cuales son:
 
-++ Test
+	* Test
+	* Test2
