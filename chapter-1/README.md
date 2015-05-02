@@ -73,19 +73,11 @@ Cada vez que en nuestro proyecto vayamos a requerir de variables globales, enume
 ```c++
 namespace nMain{
 	extern vec3 gEyePosition;
-
 	// ...
 };
 ```
-	* Ejemplo de namespace `nMain` para un archivo `.cpp`:
-	
-```c++
-namespace nMain{
-	vec3 gEyePosition;
 
-	// ...	
-};
-```
+	* Ejemplo de namespace `nMain` para un archivo `.cpp`:
 
 ## El core de OpenGL
 
