@@ -249,6 +249,24 @@ Es muy importante que estos dos archivos sean agregados como archivos externos a
 
 ## ¿Clase shader o clase programa?
 
-¡Muy buena pregunta!, es una pregunta que todos nos hacemos cuando nos enfrentamos por primera vez al `OpenGL` moderno, ya que 
+¡Muy buena pregunta!, es una pregunta que todos nos hacemos cuando nos enfrentamos por primera vez al `OpenGL` moderno, ya que para interactuar con el pipeline gráfico debemos hacerlo mediante shaders y mas ideal aún sería hacerlo mediante un módulo en `C++`, estan pregunta será respondida pronto, pero un segundo, antes de responderla en concreto ¿Qué es un shader?.
+
+Pues un shader, lo podemos ver como un programa que se ejecuta en la unidad de procesamiento gráfico o GPU. Con ellos, el programador posee un control de las etapas programables del pipeline gráfico, pues cada shader es análogo a una etapa del mismo, esto es estandar en los principales APIs de programación de gráficos 3D que son `OpenGL` y `DirectX`. Es importante destacar que la salida de un shader, es la entrada de otro y asi sucesivamente hasta que los datos que viajan por el pipeline sean dibujados. `OpenGL` provee el uso de shaders donde cada uno posee funcionalidades diferentes y adicionalmente requiere que estos sean programados haciendo uso del lenguaje de shaders propio de `OpenGL` que es `GLSL` (OpenGL Shading Language). Los shaders que `OpenGL` provee son:
+
+* Vertex Shader:
+
+* Tessellation Control Shader:
+
+* Tessellation Evaluator Shader:
+
+* Geometry Shader:
+
+* Fragment Shader:
+
+* Compute Shader:
+
+Una vez que hayamos decidido cuales etapas se van a manejar haciendo uso de los shaders, debemos tomar cada uno de los programas escritos en `GLSL`, cargarlos en la aplicación a cada uno de ellos como un `string` de `C++`, compilarlos y adjuntarselos a un programa que será el que posteriormente enlazaremos dentro de nuestra aplicación para enviar los datos al pipeline gráfico.
+
+Con esto, la respuesta a la pregunta es que nuestro clase debe llamarse `GLSLProgram`, porque `OpenGL` provee al programador de una variable del tipo `unsigned int` que es indice en GPU asociado a nuestro programa, el cual se va a encargar de crear la entrada de nuestros datos hacia el pipeline gráfico cuyas etapas estan controladas por los shaders que estan adjuntos a el.
 
 ## La clase Buffer
