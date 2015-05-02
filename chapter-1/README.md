@@ -100,7 +100,7 @@ namespace nLightSaber{
 		GREEN,
 		BLUE,
 		PURPLE,
-		DOBLE_ROJO
+		DOUBLE_RED // Darth Maul one :)
 	};
 
 	// ...
