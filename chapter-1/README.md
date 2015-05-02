@@ -126,17 +126,10 @@ namespace nMain{
 // Punto3D.h
 
 class CPoint3D{
-
-	// Atributos
 	vec3 mVertex;
-
-	// Metodos getter
 	vec3 getVertex();
-
-	// Metodo setter
 	void setVertex(vec3 nVertex);
-
-}
+};
 
 // Punto3D.cpp
 
@@ -145,17 +138,12 @@ CPoint3D::CPoint3D(){
 }
 
 vec3 CPoint3D::getVertex(){
-
-	return mVertex;
-	
+	return mVertex;	
 }
 
 void CPoint3D::setVertex(vec3 nVertex){
-	
 	mVertex = nVertex;
-
 }
-
 ```
 
 #### Relaciones entre módulos
