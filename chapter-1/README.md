@@ -68,16 +68,23 @@ Cada vez que en nuestro proyecto vayamos a requerir de variables globales, enume
 
 * Namespaces (Espacios de nombre): Los usaremos para almacenar enumerados, variables globales, etc. propios de un módulo. Cuando nos vayamos a referir a un namespace el nombre de este debe comenzar con el prefijo `n`. Adicionalmente, cuando declaramos un nuevo módulo en `C++` y este requiere de un namespace, debemos declararlo dos veces, una en el archivo de cabecera `.h` y el otro en nuestro `.cpp` de la siguiente manera:
 
-	* Ejemplo de namespace `nMain` para un archivo `.h`:
+	* Ejemplo de namespace `nMain` para un archivo `.h` y `.cpp`:
 
 ```c++
+// Namespace en el archivo .h 
+
 namespace nMain{
 	extern vec3 gEyePosition;
 	// ...
 };
-```
 
-	* Ejemplo de namespace `nMain` para un archivo `.cpp`:
+// Namespace en el archivo .cpp
+
+namespace nMain{
+	vec3 gEyePosition;
+	// ...
+};
+```
 
 ## El core de OpenGL
 
