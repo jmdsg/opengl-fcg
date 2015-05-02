@@ -64,27 +64,49 @@ Nuestra estructura de proyecto será sencilla, constara de dos partes:
 
 ### Parte lógica
 
+#### La estética del código
+
 Cada vez que en nuestro proyecto vayamos a requerir de variables globales, enumerados, namespaces, clases y sus respectivos atributos etc. lo ideal siempre será tener un formato para asi asociar rápidamente lo que queremos programar, en esta parte lógica les presento algunas buenas prácticas:
 
-* Namespaces (Espacios de nombre): Los usaremos para almacenar enumerados, variables globales, etc. propios de un módulo. Cuando nos vayamos a referir a un namespace el nombre de este debe comenzar con el prefijo `n`. Adicionalmente, cuando declaramos un nuevo módulo en `C++` y este requiere de un namespace, debemos declararlo dos veces, una en el archivo de cabecera `.h` y el otro en nuestro `.cpp` de la siguiente manera:
-
-	* Ejemplo de namespace `nMain` para un archivo `.h` y `.cpp`:
+* Namespaces (Espacios de nombre): Los usaremos para almacenar enumerados, variables globales, etc. propios de un módulo. Cuando nos vayamos a referir a un `namespace` el nombre de este debe comenzar con el prefijo `n` seguido del nombre de ese módulo siguiendo el formato `camel case`. Adicionalmente, cuando declaramos un nuevo módulo en `C++` y este requiere de un `namespace`, debemos declararlo dos veces, una en el archivo de cabecera `.h` y el otro en nuestro `.cpp` de la siguiente manera:
 
 ```c++
-// Namespace en el archivo .h 
+// Namespace en empire.h 
 
-namespace nMain{
-	extern vec3 gEyePosition;
+namespace nEmpire{
+	extern vec3 gDeathStarPosition;
 	// ...
 };
 
-// Namespace en el archivo .cpp
+// Namespace en empire.cpp
 
-namespace nMain{
-	vec3 gEyePosition;
+namespace nEmpire{
+	vec3 gDeathStarPosition;
 	// ...
 };
 ```
+
+Ahora, si nos fijamos en el `namespace` que corresponde a `empire.h` las variables estan precedidas por una palabra reservada denominada `extern`. La finalidad de `extern` yace en que cuando nosotros incluimos `empire.h` en otro módulo y queremos hacer uso de la variable `gDeathStarPosition`, le notificamos al compilador de que existe una variable llamada `gDeathStarPosition` declarada para este módulo sin embargo, el archivo de cabecera `empire.h` no posee el valor de dicha variable, ahi es cuando el enlazador resuelve el valor de dicha variable y la encuentra en el archivo `main.cpp` y de ahí toma su valor. ¿Para qué es esto útil?, es útil porque así no tendremos en memoria dos variables cuya finalidad sea la misma y que posean el mismo nombre para un mismo módulo, es decir, ahorramos memoria.
+
+* Enumerados: Son un conjunto de variables relacionadas que van a tener valores de interés para el programador, en `C++` para indicar los enumerados se usa la palabra reservada `enum` cuando a un conjunto de variables de un enumerado no se les asigna un valor predeterminado, se les asignaran valores incrementales desde cero hasta el número de variables que tenga el enumerado menos uno. Es importante destacar, que cuando se tiene un módulo que consta de un `.h` y un `.cpp`, el enumerado solo se va a declarar en el `namespace` del archivo de cabecera y las variables deben ser escritas en mayuscula y al ser palabras compuestas separarlas por un underscore `_`.
+
+```c++
+// Enumerado en lightSaber.h 
+
+namespace nLightSaber{
+
+	enum nColors{
+		RED,
+		GREEN,
+		BLUE,
+		PURPLE
+	};
+
+	// ...
+};
+```
+
+#### Relaciones entre módulos
 
 ## El core de OpenGL
 
