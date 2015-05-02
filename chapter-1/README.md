@@ -123,25 +123,39 @@ namespace nMain{
 	* Metodos setter: Deben tener como prefijo `set`
 
 ```c++
-// Ejemplo de una clase
-class CTriangle{
+// Punto3D.h
+
+class CPoint3D{
 
 	// Atributos
-	vec3 mPointA;
-	vec3 mPointB;
-	vec3 mPointC;
+	vec3 mVertex;
 
-	// Metodos getter 
-	vec3 getPointA();
-	vec3 getPointB();
-	vec3 getPointC();
+	// Metodos getter
+	vec3 getVertex();
 
-	// Metodos setter
-	void setPointA(vec3 nPointA);
-	void setPointB(vec3 nPointB);
-	void setPointC(vec3 nPointC);
+	// Metodo setter
+	void setVertex(vec3 nVertex);
 
 }
+
+// Punto3D.cpp
+
+CPoint3D::CPoint3D(){
+	
+}
+
+vec3 CPoint3D::getVertex(){
+
+	return mVertex;
+	
+}
+
+void CPoint3D::setVertex(vec3 nVertex){
+	
+	mVertex = nVertex;
+
+}
+
 ```
 
 #### Relaciones entre módulos
