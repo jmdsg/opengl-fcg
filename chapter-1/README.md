@@ -116,6 +116,34 @@ namespace nMain{
 };
 ```
 
+* Clases: El formato para los nombres de las clases será el prefijo `C` en mayuscula seguido del nombre de la clase.
+
+	* Atributos: Deben tener como prefijo `m`.
+	* Metodos getter: Deben tener como prefijo `get`.
+	* Metodos setter: Deben tener como prefijo `set`
+
+```c++
+// Ejemplo de una clase
+class CTriangle{
+
+	// Atributos
+	vec3 mPointA;
+	vec3 mPointB;
+	vec3 mPointC;
+
+	// Metodos getter 
+	vec3 getPointA();
+	vec3 getPointB();
+	vec3 getPointC();
+
+	// Metodos setter
+	void setPointA(vec3 nPointA);
+	void setPointB(vec3 nPointB);
+	void setPointC(vec3 nPointC);
+
+}
+```
+
 #### Relaciones entre módulos
 
 ## El core de OpenGL
