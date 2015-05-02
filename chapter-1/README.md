@@ -203,6 +203,52 @@ En vista de esto, surgió un nuevo proyecto el cual se llama [OpenGL Loader Gene
 
 * gl_core_4_*.c: Que será el archivo de código fuente que contendrá todas las funcionalidades implementadas del core de `OpenGL` generado.
 
+Para hacer uso del core de `OpenGL`, debemos cumplir con dos pasos: 
+
+* Cargar las funcionalidades:
+
+```c++
+bool initCore(){
+
+	if (ogl_LoadFunctions() == ogl_LOAD_FAILED){
+
+		glfwTerminate();
+		return false;
+
+	}
+
+	// ...
+
+	return true;
+}
+```
+
+Indicarle a `GLFW` que debe ejecutarse en mode core:
+
+```c++
+bool initGLFW(){
+
+	if (!glfwInit()){
+
+		glfwTerminate();
+		return false;
+
+	}
+
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+// ...
+
+}
+```
+
+Es muy importante que estos dos archivos sean agregados como archivos externos a nuestro proyecto en Visual Studio, ya que sino, nuestra aplicación no se ejecutará.
+
 ## ¿Clase shader o clase programa?
+
+¡Muy buena pregunta!, es una pregunta que todos nos hacemos cuando nos enfrentamos por primera vez al `OpenGL` moderno, ya que 
 
 ## La clase Buffer
