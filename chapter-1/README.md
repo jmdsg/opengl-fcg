@@ -11,9 +11,9 @@ Un aspecto importante de esta materia es que trabajaremos absolutamente todo hac
 * ¡La vieja forma de despliegue!
 
 ```c++
-glBegin(GL_TRIANGLES, GL_POINTS . . .)
+glBegin(GL_TRIANGLES, GL_POINTS ...)
 
- // . . .
+ // ...
 
 glEnd();
 ```
@@ -24,11 +24,11 @@ glEnd();
 glMatrixMode(GL_MODELVIEW, GL_PROJECTION ...);
 glLoadIdentity();
 
- // . . .
+ // ...
 
 ```
 
-Esto por el cuello de botella que se forma entre el procesador y la unidad de procesamiento gráfico (GPU), que nos limita en explotar las grandes capacidades del hardware, adicionalmente esta no es la forma correcta de trabajar actualmente en computación gráfica, solo se utilizo para entender como desplegar de forma básica y como llevar a cabo las transformaciones a aplicar a los distintos datos mediante el uso de matrices.
+Esto por el cuello de botella que se forma entre el procesador y la unidad de procesamiento gráfico (GPU) que nos limita en explotar las grandes capacidades del hardware, adicionalmente esta no es la forma correcta de trabajar actualmente en computación gráfica, solo se utilizo para entender como desplegar de forma básica y como llevar a cabo las transformaciones a aplicar a los distintos datos mediante el uso de una pila de matrices en versiones viejas de `OpenGL`.
 
 ## Estructura de un proyecto en Computación Gráfica
 
@@ -36,22 +36,33 @@ En este punto nos preguntamos, ¿Para qué una estructura de proyecto?, pues por
 
 * Por una mejor organización.
 * Por tener un código limpio y modular.
-* Porque a la hora de tener un bug, este sea ubicado rápidamente, ya que como todos sabemos, hacer un debug en una aplicación gráfica no es una tarea sencilla.
+* Porque a la hora de tener un bug, este sea ubicado y corregido rápidamente, ya que como todos sabemos, hacer un debug en una aplicación gráfica no es una tarea sencilla.
 
 Nuestra estructura de proyecto será sencilla, constara de dos partes:
 
-* Parte física: Que constará de las carpetas donde estaran todos nuestros archivos adicionales como pueden ser librerias, modelos, texturas, archivos de configuración etc.
+* Parte física: Que constará de las carpetas donde estaran todos nuestros archivos adicionales como pueden ser bibliotecas, modelos, texturas, archivos de configuración etc.
 
-* Parte lógica: Que será a nivel de código `C++`, como se usaran las variables globales, enumerados, formatos para los nombres de las clases y variables a usar y como llevar a cabo la interacción entre módulos.
+* Parte lógica: Que será a nivel de código `C++`, como se usaran las variables globales, enumerados, namespaces, formatos para los nombres de las clases, formatos para los nombres de las variables y como llevar a cabo la interacción entre módulos.
 
-### Estructura física
+### Parte física
 
 * Dentro de nuestro proyecto de VS 2013 tendremos una carpeta con el mismo nombre de nuestro proyecto, en su interior es donde nuestro IDE va a crear todos nuestros archivos `.h .cpp .hpp`, ahí lo primero que debemos hacer es crear una carpeta llamada `Assets`, esta carpeta va a contener varias carpetas adicionales, las cuales son:
 
-	* Test
-	* Test2
+	* Headers, aqui colocaremos todas las bibliotecas adicionales a nuestra aplicación.
 
-### Estructura lógica:
+	* Libs, aqui colocaremos todos los archivos con extension `.lib`.
+
+	* Models, aqui colocaremos todos los modelos de nuestra aplicación.
+
+	* SceneFiles, aqui colocaremos los archivos con una extension propia de configuración de nuestra escena. Para el caso de los modelos se especifican las transformaciones afines necesarias, los coeficientes ambientales, difusos y especulares y para las luces las posiciones, direcciones, coeficientes etc. Nota: Se recomienda usar el formato `JSON` y usar una biblioteca para la lectura del mismo.
+
+	* Shaders, aqui colocaremos todos los shaders que usaremos en nuestra aplicación.
+
+	* Textures, aqui se colocan todas las texturas a usar en la aplicación.
+
+* Dentro de la carpeta `Debug` que nos genera nuestro proyecto se crea un ejecutable o `.exe`, aqui debemos colocar todos nuestras librerias de enlace dinámico `.dll`.
+
+### Parte lógica
 
 ## El core de OpenGL
 
