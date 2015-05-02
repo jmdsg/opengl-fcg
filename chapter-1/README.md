@@ -6,7 +6,7 @@ En este capítulo se explicaran diversos aspectos básicos de como trabajar con 
 
 Muchos al llegar a esta materia tenemos ciertas interrogantes con respecto a lo aprendido en Introducción a la Computación Gráfica como cuando hablaron de VBOs, VAOs, Shaders etc. ¿Qué es en concreto todo esto? ¿Para que los uso? ¿Como lo uso?, ¡TENGO QUE APRENDER TODO YA!, pues les participo que tengan calma, todo a su tiempo, todo lo veremos con detenimiento para ir cubriendo cada interrogante que pueda haber quedado con respecto al final de la primera materia de esta interesante rama de las ciencias de la computación.
 
-Un aspecto importante de esta materia es que trabajaremos absolutamente todo haciendo uso de las ultimas funcionalidades de `OpenGL`, es decir, ya a nuestro nivel como programadores gráficos debemos entender el concepto de la GPU y como podemos representar las etapas programables del pipeline gráfico mediante los distintos tipos de shaders y aprovecharlos al máximo como herramienta. Con esto ya debemos olvidar los famosos:
+Un aspecto importante de esta materia es que trabajaremos absolutamente todo haciendo uso de las ultimas funcionalidades de `OpenGL`, es decir, ya a nuestro nivel como programadores gráficos debemos entender el concepto de la GPU y como podemos representar las etapas programables del pipeline gráfico mediante los distintos tipos de shaders y aprovecharlos al máximo como herramienta. Con esto ya debemos olvidar:
 
 * ¡La vieja forma de despliegue!
 
@@ -184,6 +184,24 @@ o
 ```
 
 ## El core de OpenGL
+
+Como la mayoria de nosotros estamos acostumbrados a usar `Windows` para llevar a acabo nuestras tareas de computación gráfica haciendo uso de Visual Studio, es importante tener en cuenta una cita historica acerca de como han sido las cosas con respecto a `OpenGL` en los sistemas operativos `Windows`.
+
+Antiguamente, en plataformas `Windows` se hacia uso de `OpenGL` gracias al proyecto `OpenGL ABI` (Application Binary Interface), actualmente, este proyecto no se actualiza desde la version 1.1 del mismo, limitanto el acceso de los programadores gráficos que usan alguno de estos sistemas para acceder a las ultimas funcionalidades de `OpenGL`. `Windows` típicamente, viene con un archivo de cabecera llamado `gl.h` que es donde se accede a las funcionalidades para `OpenGL 1.1`, en vista de que Microsoft no ha tenido planes para continuar con el desarrollo de `OpenGL ABI` ni de la actualización de `gl.h` ni de `opengl32.lib`, han surgido bibliotecas adicionales para evitarnos esta limitación, una de ellas es `GLEW`.
+
+`GLEW` (OpenGL Extension Wrangler), es una biblioteca muy común que se hace presente en las aplicaciones gráficas para que el programador pueda acceder a las últimas funcionalidades de `OpenGL` y es por lo general, con la que todos nosotros comenzamos a trabajar, sin embargo, `GLEW` no es la mejor opción para utilizar las últimas funcionalidades del `OpenGL` moderno por tres sencillas razones:
+
+* Provee un largo archivo de cabecera, que contiene todas las funcionalidades de TODAS las versiones de `OpenGL` las cuales, la mayoria no las vamos usar.
+
+* Algunas funcionalidades que provee pueden estar deprecated.
+
+* `GLEW` se distribuye como una biblioteca que debe ser compilada por separado y enlazada dentro de nuestro proyecto para que funcione.
+
+En vista de esto, surgió un nuevo proyecto el cual se llama [OpenGL Loader Generator](https://bitbucket.org/alfonse/glloadgen/wiki/Home). Esta biblioteca es muy flexible y eficiente y se encarga de solucionar los tres problemas mencionados previamente con `GLEW`, aportandole al programador las funcionalidades específicas del core de `OpenGL` que este necesite, adicionalmente, crea dos archivos:
+
+* gl_core_4_*.h: Que será el archivo de cabecera que contendrá todas las funcionalidades del core que generemos de `OpenGL`.
+
+* gl_core_4_*.c: Que será el archivo de código fuente que contendrá todas las funcionalidades implementadas del core de `OpenGL` generado.
 
 ## ¿Clase shader o clase programa?
 
