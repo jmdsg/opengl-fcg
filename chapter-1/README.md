@@ -223,7 +223,7 @@ bool initCore(){
 }
 ```
 
-Indicarle a `GLFW` que debe ejecutarse en mode core:
+* Indicarle a `GLFW` que debe ejecutarse en mode core:
 
 ```c++
 bool initGLFW(){
