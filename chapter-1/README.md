@@ -28,7 +28,7 @@ glLoadIdentity();
 
 ```
 
-Esto por el cuello de botella que se forma entre el procesador y la unidad de procesamiento gráfico (GPU) que nos limita en explotar las grandes capacidades del hardware, adicionalmente esta no es la forma correcta de trabajar actualmente en computación gráfica, solo se utilizo para entender como desplegar de forma básica y como llevar a cabo las transformaciones a aplicar a los distintos datos mediante el uso de una pila de matrices en versiones viejas de `OpenGL`.
+Esto por el cuello de botella que se forma entre el procesador y la unidad de procesamiento gráfico (GPU) que nos limita en explotar las grandes capacidades del hardware, adicionalmente esta no es la forma correcta de trabajar actualmente en computación gráfica, solo se utilizó para entender como desplegar de forma básica y como llevar a cabo las transformaciones a aplicar a los distintos datos mediante el uso de una pila de matrices en versiones viejas de `OpenGL`.
 
 ## Estructura de un proyecto en Computación Gráfica
 
@@ -54,7 +54,7 @@ Nuestra estructura de proyecto será sencilla, constara de dos partes:
 
 	* Models, aqui colocaremos todos los modelos de nuestra aplicación.
 
-	* SceneFiles, aqui colocaremos los archivos con una extension propia de configuración de nuestra escena. Para el caso de los modelos se especifican las transformaciones afines necesarias, los coeficientes ambientales, difusos y especulares y para las luces las posiciones, direcciones, coeficientes etc. Nota: Se recomienda usar el formato `JSON` y usar una biblioteca para la lectura del mismo.
+	* Config, aqui colocaremos los archivos con una extension propia de configuración de nuestra escena. Para el caso de los modelos se especifican las transformaciones afines necesarias, los coeficientes ambientales, difusos y especulares y para las luces las posiciones, direcciones, coeficientes etc. Nota: Se recomienda usar el formato `JSON` y usar una biblioteca para la lectura del mismo.
 
 	* Shaders, aqui colocaremos todos los shaders que usaremos en nuestra aplicación.
 
@@ -63,6 +63,32 @@ Nuestra estructura de proyecto será sencilla, constara de dos partes:
 * Dentro de la carpeta `Debug` que nos genera nuestro proyecto se crea un ejecutable o `.exe`, aqui debemos colocar todos nuestras librerias de enlace dinámico `.dll`.
 
 ### Parte lógica
+
+Cada vez que en nuestro proyecto vayamos a requerir de variables globales, enumerados, namespaces, clases y sus respectivos atributos etc. lo ideal siempre será tener un formato para asi asociar rápidamente lo que queremos programar, en esta parte lógica les presento algunas buenas prácticas:
+
+* Namespaces (Espacios de nombre): Los usaremos para almacenar enumerados, variables globales, etc. propios de un módulo. Cuando nos vayamos a referir a un namespace el nombre de este debe comenzar con el prefijo `n`. Adicionalmente, cuando declaramos un nuevo módulo en `C++` y este requiere de un namespace, debemos declararlo dos veces, una en el archivo de cabecera `.h` y el otro en nuestro `.cpp` de la siguiente manera:
+
+	* Ejemplo de namespace `nMain` para un archivo `.h`:
+
+```c++
+namespace nMain{
+	extern vec3 gEyePosition;
+
+	// ...
+
+};
+```
+
+	* Ejemplo de namespace `nMain` para un archivo `.cpp`:
+
+```c++
+namespace nMain{
+	vec3 gEyePosition;
+
+	// ...
+	
+};
+```
 
 ## El core de OpenGL
 
