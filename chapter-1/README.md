@@ -150,7 +150,7 @@ void CPoint3D::setVertex(vec3 nVertex){
 
 La interacción la vamos a definir como las distintas asociaciones que van a tener los módulos entre ellos. Básicamente, en nuestra aplicación gráfica tendremos un conjunto de módulos básicos que son los siguientes:
 
-* Buffer (Módulo de despliegue): Es el módulo mas elemental de nuestra aplicación y es el que usaremos para llevar a cabo el despliegue de nuestros modelos y luces haciendo uso de VBOs y VAOs.
+* Buffer (Módulo de despliegue): Es el módulo mas elemental de nuestra aplicación y es el que usaremos para llevar a cabo el despliegue de nuestros modelos y luces haciendo uso de VBOs y VAOs. Nota: Este módulo se explicará con mas detalle en la sección `La clase Buffer`.
 
 * Main (Módulo principal): Que es donde estaran todas las configuraciones de la ventana, el contexto de `OpenGL`, los callbacks en `GLFW` etc.
 
@@ -162,7 +162,7 @@ La interacción la vamos a definir como las distintas asociaciones que van a ten
 
 * GLSLProgram (Módulo de programa `GLSL`): En el nos encargaremos de cargar, enlazar y desenlazar los shaders. Por otro lado, nos sera de muchísima utilidad para enviar nuestros datos al pipeline gráfico. Nota: Este módulo se explicara en detalle en la sección `¿Clase shader o clase programa?`
 
-* Scene (Módulo asociado a la escena): Que será donde se encuentran los distintos procedimientos para renderizar haciendo uso de los programas que contienen a los shaders, el vector de los modelos, el vector de las luces, los objetos que administran las interfaces de usuario, entre otros.
+* Scene (Módulo de escena): Que será donde se encuentran los distintos procedimientos para renderizar haciendo uso de los programas que contienen a los shaders, el vector de los modelos, el vector de las luces, los objetos que administran las interfaces de usuario, entre otros.
 
 Adicionalmente, cada vez que vayamos a crear un nuevo módulo en nuestra aplicación debemos especificar unas instrucciones que nos van a evitar que el compilador nos notifique redundancia de inclusión cuando vayamos a incluir este nuevo módulo en otro, estas instrucciones son:
 
