@@ -253,17 +253,15 @@ Es muy importante que estos dos archivos sean agregados como archivos externos a
 
 Pues un shader, lo podemos ver como un programa que se ejecuta en la unidad de procesamiento gráfico o GPU. Con ellos, el programador posee un control de las etapas programables del pipeline gráfico, pues cada shader es análogo a una etapa del mismo, esto es estandar en los principales APIs de programación de gráficos 3D que son `OpenGL` y `DirectX`. Es importante destacar que la salida de un shader, es la entrada de otro y asi sucesivamente hasta que los datos que viajan por el pipeline sean dibujados. `OpenGL` provee el uso de shaders donde cada uno posee funcionalidades diferentes y adicionalmente requiere que estos sean programados haciendo uso del lenguaje de shaders propio de `OpenGL` que es `GLSL` (OpenGL Shading Language). Los shaders que `OpenGL` provee son:
 
-* Vertex Shader:
+* Vertex Shader: Tambien conocido como procesador de vertices, se encarga de llevar a cabo todas las operaciones sobre los vertices pertenecientes a los modelos que componen una escena dentro de una aplicacion. Es una etapa obligatoria.
 
-* Tessellation Control Shader:
+* Tessellation Shader: Estos shaders reciben los datos que provienen del vertex shader, en esta etapa la morfologia de los objetos se describe mediante un nuevo tipo de dato denominado parches, estos parches son teselados por este shader, produciendo modelos de mayor resolucion. Es una etapa opcional.
 
-* Tessellation Evaluator Shader:
+* Geometry Shader: El geometry shader se encarga de trabajar con las primitivas graficas elementales directamente. En el, el programador tiene la potestad de crear nuevas primitivas antes de la etapa de rasterizacion. Representa una etapa adicional dentro del pipeline grafico.
 
-* Geometry Shader:
+* Fragment Shader: En este shader es donde el programador tiene control total sobre cada uno de los fragmentos de la pantalla y toma la decisiones acerca de que color va a tener cada uno de ellos o de llevar a cabo un proceso de descarte.
 
-* Fragment Shader:
-
-* Compute Shader:
+* Compute Shader: Estos shaders fueron agregados a partir de la version 4.3 de OpenGL, como tal, no forman parte del pipeline grafico. El principal proposito de los compute shaders es realizar calculo haciendo uso de bloques de hilos, tienen una finalidad muy similar a lo que son los APIs de programacion paralela como CUDA u OpenCL.
 
 Una vez que hayamos decidido cuales etapas se van a manejar haciendo uso de los shaders, debemos tomar cada uno de los programas escritos en `GLSL`, cargarlos en la aplicación a cada uno de ellos como un `string` de `C++`, compilarlos y adjuntarselos a un programa que será el que posteriormente enlazaremos dentro de nuestra aplicación para enviar los datos al pipeline gráfico.
 
