@@ -302,7 +302,7 @@ void draw(){
 
 ## La clase Buffer
 
-En el `OpenGL` moderno, para llevar a cabo el proceso de rendering es obligatorio tener los datos en la unidad de procesamiento gráfico (GPU), para ello, se hace uso de porciones de memoria denominadas buffers y estos son accedidos desde el contexto del CPU mediante indices del tipo `unsigned int`, algunos de los principales buffers que se usan desplegar en `OpenGL` combinando sus funcionalidades son:
+En el `OpenGL` moderno, para llevar a cabo el proceso de rendering es obligatorio tener los datos en la unidad de procesamiento gráfico (GPU), para ello, se hace uso de porciones de memoria denominadas buffers y estos son utilizados desde el contexto del CPU mediante indices del tipo `unsigned int`, algunos de los principales buffers que se usan desplegar en `OpenGL` combinando sus funcionalidades son:
 
 * Vertex Buffer Objects (VBOs): Representa un buffer en GPU que contiene los datos a ser renderizados.
 
@@ -316,7 +316,7 @@ Por otro lado, existen formas de organizar nuestros datos haciendo uso de los bu
 
 * Structure of Arrays (SOA): Los SOA hacen uso de los Vertex Array Objects (VAOs), se encargan de crear varios Vertex Buffer Objects (VBOs) homogeneos y se le asocian a los VAOs.
 
-* Indexes structure of array (ISOA): En esta implementación consideramos un SOA pero adicionalmente, le imcorporamos un Index Buffer Object (IBO), donde cada índice usado hace referencia a un dato en los distintos Vertex Buffer Objects que maneja el Vertex Array Object.
+* Indexes structure of array (ISOA): En esta implementación consideramos un SOA pero adicionalmente, le incorporamos un Index Buffer Object (IBO), donde cada indice usado hace referencia a un dato en los distintos Vertex Buffer Objects que maneja el Vertex Array Object.
 
 La clase Buffer, implementa un ISOA, por ende, garantiza un despliegue eficiente de los datos.
 
@@ -342,13 +342,13 @@ void init(){
 
 void draw(){
 	
-	mpGLSLProgram->use();
+	pGLSLProgram->use();
 
 		// ...
 
-		mpBuffer->draw();
+		pBuffer->draw();
 
-	mpGLSLProgram->unUse();
+	pGLSLProgram->unUse();
 
 }
 
@@ -364,8 +364,8 @@ void draw(){
 
 ```
 
-## Librerias para correr el código
+## Bibliotecas para correr el código
 
 * GLM
 * GLFW
-* OpenGL Loader Generator
+* OpenGL Loader Generator (Generar el core de OpenGL 4.3)
