@@ -11,7 +11,7 @@ Un aspecto importante de esta materia es que trabajaremos absolutamente todo hac
 * ¡La vieja forma de despliegue!
 
 ```c++
-glBegin(GL_TRIANGLES, GL_POINTS ...)
+glBegin(GL_TRIANGLES, GL_POINTS ...);
 
  // ...
 
