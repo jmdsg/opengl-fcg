@@ -314,7 +314,7 @@ Por otro lado, existen formas de organizar nuestros datos haciendo uso de los bu
 
 * Array of structures (AOS): La idea de los AOS consiste en ir creando bloques heterogeneos de datos (vértices, normales, coordenadas de textura etc.) en arreglos muy grandes que contienen estos bloques de forma consecutiva.
 
-* Structure of Arrays(SOA): Los SOA hacen uso de los Vertex Array Objects (VAOs), se encargan de crear varios Vertex Buffer Objects (VBOs) homogeneos y se le asocian a los VAOs.
+* Structure of Arrays (SOA): Los SOA hacen uso de los Vertex Array Objects (VAOs), se encargan de crear varios Vertex Buffer Objects (VBOs) homogeneos y se le asocian a los VAOs.
 
 * Indexes structure of array (ISOA): En esta implementación consideramos un SOA pero adicionalmente, le imcorporamos un Index Buffer Object (IBO), donde cada índice usado hace referencia a un dato en los distintos Vertex Buffer Objects que maneja el Vertex Array Object.
 
@@ -344,6 +344,8 @@ void draw(){
 	
 	mpGLSLProgram->use();
 
+		// ...
+
 		mpBuffer->draw();
 
 	mpGLSLProgram->unUse();
@@ -354,8 +356,6 @@ void draw(){
 
 void draw(){
 	
-	
-
 	glBindVertexArray(mVao);
 	glDrawElements(GL_TRIANGLES, mVBOSize[nBuffer::bufferId::VERTEXES_INDEXES_BUFFER], GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
