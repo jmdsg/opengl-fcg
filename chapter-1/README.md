@@ -267,7 +267,7 @@ Una vez que hayamos decidido cuales etapas se van a manejar haciendo uso de los 
 
 Con esto, la respuesta a la pregunta es que nuestro clase debe llamarse `GLSLProgram`, porque `OpenGL` provee al programador de una variable del tipo `unsigned int` que es indice en GPU asociado a nuestro programa, el cual se va a encargar de crear la entrada de nuestros datos hacia el pipeline gráfico cuyas etapas estan controladas por los shaders que estan adjuntos a el.
 
-* Ejemplo de inicialización de la clase GLSLProgram
+* Ejemplo de inicialización de la clase `GLSLProgram`
 
 ```c++
 void init(){
@@ -286,7 +286,7 @@ void init(){
 
 ```
 
-* Ejemplo de uso de la clase GLSLProgram
+* Ejemplo de uso de la clase `GLSLProgram`
 
 ```c++
 void draw(){
@@ -296,8 +296,76 @@ void draw(){
 		// ...
 
 	pGLSLProgram->unUse();
-	
+
 }
 ```
 
 ## La clase Buffer
+
+En el `OpenGL` moderno, para llevar a cabo el proceso de rendering es obligatorio tener los datos en la unidad de procesamiento gráfico (GPU), para ello, se hace uso de porciones de memoria denominadas buffers y estos son accedidos desde el contexto del CPU mediante indices del tipo `unsigned int`, algunos de los principales buffers que se usan desplegar en `OpenGL` combinando sus funcionalidades son:
+
+* Vertex Buffer Objects (VBOs): Representa un buffer en GPU que contiene los datos a ser renderizados.
+
+* Vertex Array Objects (VAOs): Representa un arreglo VBOs en la GPU.
+
+* Index Buffer Objects (IBOs): Representa un arreglo de indices en la GPU.
+
+Por otro lado, existen formas de organizar nuestros datos haciendo uso de los buffers previamente mencionados para que el despliegue sea mas eficiente, algunas formas de organización son:
+
+* Array of structures (AOS): La idea de los AOS consiste en ir creando bloques heterogeneos de datos (vértices, normales, coordenadas de textura etc.) en arreglos muy grandes que contienen estos bloques de forma consecutiva.
+
+* Structure of Arrays(SOA): Los SOA hacen uso de los Vertex Array Objects (VAOs), se encargan de crear varios Vertex Buffer Objects (VBOs) homogeneos y se le asocian a los VAOs.
+
+* Indexes structure of array (ISOA): En esta implementación consideramos un SOA pero adicionalmente, le imcorporamos un Index Buffer Object (IBO), donde cada índice usado hace referencia a un dato en los distintos Vertex Buffer Objects que maneja el Vertex Array Object.
+
+La clase Buffer, implementa un ISOA, por ende, garantiza un despliegue eficiente de los datos.
+
+* Inicialización de la clase buffer
+
+```c++
+void init(){
+	
+	CBuffer *pBuffer = new CBuffer();
+	pBuffer->fillBuffer(nBuffer::bufferId::VERTEXES_2D_BUFFER, 8, quadVerts);
+	pBuffer->fillBuffer(nBuffer::bufferId::VERTEXES_INDEXES_BUFFER, 6, quadIndexes);
+
+	// ...
+
+}
+```
+
+* Despliegue usando la clase buffer
+
+```c++
+
+// Código en Scene.cpp
+
+void draw(){
+	
+	mpGLSLProgram->use();
+
+		mpBuffer->draw();
+
+	mpGLSLProgram->unUse();
+
+}
+
+// Código en Buffer.cpp
+
+void draw(){
+	
+	
+
+	glBindVertexArray(mVao);
+	glDrawElements(GL_TRIANGLES, mVBOSize[nBuffer::bufferId::VERTEXES_INDEXES_BUFFER], GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+
+}
+
+```
+
+## Librerias para correr el código
+
+* GLM
+* GLFW
+* OpenGL Loader Generator
