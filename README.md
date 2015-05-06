@@ -33,6 +33,8 @@ Todos estos códigos se deben correr en Microsoft Visual Studio 2013 siguiendo l
 #### Aspectos importantes
 + En la carpeta Assets\Libs deben encontrarse todos los libs especificados anteriormente menos el OpenGL32.lib.
 
++ Para poder usar el core de `OpenGL` deben incluir como archivos externos el `.h` y el `.c` que les genera el script en `LUA`.
+
 + Todos las librerias de enlace dinámico `.dll` deben colocarse en la carpeta Debug específicamente al lado del ejecutable.
 
 ### Formato para la entrega de proyectos
