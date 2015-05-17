@@ -4,10 +4,18 @@
 
 CLight::CLight(){
 
+	mpBuffer = new CBuffer();
+
 }
 
 // <-- Destructor --> //
 
 CLight::~CLight(){
+
+}
+
+void CLight::draw(){
+
+	mpBuffer->draw();
 
 }

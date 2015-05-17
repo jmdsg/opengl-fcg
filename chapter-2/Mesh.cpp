@@ -4,6 +4,8 @@
 
 CMesh::CMesh(){
 
+	mpBuffer = new CBuffer();
+
 }
 
 // <-- Destructor --> //
