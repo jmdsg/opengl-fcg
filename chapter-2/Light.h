@@ -1,13 +1,18 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-class CLight{
+#include "Drawable.h"
+
+class CLight : public CDrawable{
 private:
 
 public:
 
 	CLight();
 	~CLight();
+
+	void draw();
+
 };
 
 #endif
