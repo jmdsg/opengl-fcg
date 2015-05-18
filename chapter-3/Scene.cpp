@@ -23,3 +23,17 @@ void CScene::init(){
 void CScene::draw(){
 
 }
+
+// <-- Draws shadows --//
+
+void CScene::drawShadows(){
+
+	// TODO
+
+}
+
+void CScene::drawShadowMapping(){
+
+	// TODO
+
+}
