@@ -22,7 +22,7 @@ Antes de entrar en detalles de implementación, es importante que tengamos prese
 
 * Renderbuffer Objects (RBOs): También llamados buffer de imagen, son aquellos que contienen información sobre una imagen y su formato, adicionalmente es administrado de forma eficiente por `OpenGL`. La información que manejan los Renderbuffer objects toma sentido cuando estos se unen a los Framebuffer Object (FBO) con la finalidad de minimizar la copia de datos y optimizar el rendimiento, es importante que el formato que va a manejar el buffer de imagen coincida con lo que OpenGL espera dibujar en su interior. Por ejemplo, no tiene sentido que en un Renderbuffer object que almacena información de color almacenemos información acerca de la profundidad de una escena.
 
- * Framebuffer Objects (FBOs): Los framebuffer objects son aquellos que almacenan la información de dibujado en una textura. Un aspecto importante es que el único FBO que puede visualizar el usuario es el que se provee por defecto por el sistema manejador de ventana (en nuestro caso `GLFW`), todos aquellos FBOs que se creen en nuestra aplicación no podrán ser desplegados directamente en el monitor, ya que ellos solo tienen soporte al dibujado fuera de pantalla (en inglés off-screen rendering). Otra diferencia entre el framebuffer que provee el sistema de ventanas y los framebuffers que se crean dentro de la aplicación, yace en que el que es controlado por el sistema manejador de ventanas reserva internamente sus propios buffers (color, profundidad y stencil) cuando una ventana es creada. Cuando en la aplicación se crean FBOs, se deben crear Renderbuffers objects adicionales que se deben asociar con un FBO para especificar lo que va almacenar. Los buffers que provee el sistema manejador de ventana nunca podrán ser asociados con los que están asociados a un FBO creado en la aplicación y viceversa.
+* Framebuffer Objects (FBOs): Los framebuffer objects son aquellos que almacenan la información de dibujado en una textura. Un aspecto importante es que el único FBO que puede visualizar el usuario es el que se provee por defecto por el sistema manejador de ventana (en nuestro caso `GLFW`), todos aquellos FBOs que se creen en nuestra aplicación no podrán ser desplegados directamente en el monitor, ya que ellos solo tienen soporte al dibujado fuera de pantalla (en inglés off-screen rendering). Otra diferencia entre el framebuffer que provee el sistema de ventanas y los framebuffers que se crean dentro de la aplicación, yace en que el que es controlado por el sistema manejador de ventanas reserva internamente sus propios buffers (color, profundidad y stencil) cuando una ventana es creada. Cuando en la aplicación se crean FBOs, se deben crear Renderbuffers objects adicionales que se deben asociar con un FBO para especificar lo que va almacenar. Los buffers que provee el sistema manejador de ventana nunca podrán ser asociados con los que están asociados a un FBO creado en la aplicación y viceversa.
 
 ## Aspectos de implementación
 
@@ -113,7 +113,11 @@ void mainLoop(){
 
 		updateApp();
 
-		nMain::gpScene->drawShadows(); // Método de dibujado de sombras
+		// Primera pasada, método de dibujado de sombras
+
+		nMain::gpScene->drawShadows(); 
+
+		// Segunda pasada, método de dibujado común
 
 		nMain::gpScene->draw();
 
@@ -121,8 +125,6 @@ void mainLoop(){
 
 		glfwSwapBuffers(nMain::gpWindow);
 		glfwPollEvents();
-
-		updateFPS();
 
 	}
 
