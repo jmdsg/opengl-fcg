@@ -1,4 +1,4 @@
-# Capitulo III - Mapas de sombra
+# Capitulo III - Shadow Mapping
 
 ## Introducción
 
@@ -8,11 +8,11 @@ Los recientes avances en computación grafica han producido un conjunto de técn
 
 Es una técnica que fue propuesta por Lance Williams en 1978 que tiene dos pasadas y usa texturas de profundidad para proveer una solución al dibujado de sombras.
 
-En la primera pasada, la escena se dibuja desde el punto de vista de la fuente de luz, la información de profundidad es almacenada en una textura denominada mapa de sombra (shadow map), que va a proveer de información acerca de la visibilidad de los objetos desde la perspectiva de la fuente de luz, Así, para cada punto de la escena que tenga valores de profundidad más cercanos a la fuente de luz de los que tiene almacenados el mapa de sombras estarán iluminados, de lo contrario se encontrarán en sombra.
+* En la primera pasada, la escena se dibuja desde el punto de vista de la fuente de luz, la información de profundidad es almacenada en una textura denominada mapa de sombra (shadow map), que va a proveer de información acerca de la visibilidad de los objetos desde la perspectiva de la fuente de luz, Así, para cada punto de la escena que tenga valores de profundidad más cercanos a la fuente de luz de los que tiene almacenados el mapa de sombras estarán iluminados, de lo contrario se encontrarán en sombra.
 
-En la segunda pasada, la escena es dibujada normalmente, pero la profundidad de cada fragmento debe ser primero comparada contra el mapa de sombras para determinar si está o no en sombra. El fragmento entonces será coloreado de una forma diferente dependiendo del resultado de la prueba. Si el fragmento está en sombra entonces, se va a colorear únicamente con el color de la luz ambiental, en caso contrario se va a colorear de una forma normal.
+* En la segunda pasada, la escena es dibujada normalmente, pero la profundidad de cada fragmento debe ser primero comparada contra el mapa de sombras para determinar si está o no en sombra. El fragmento entonces será coloreado de una forma diferente dependiendo del resultado de la prueba. Si el fragmento está en sombra entonces, se va a colorear únicamente con el color de la luz ambiental, en caso contrario se va a colorear de una forma normal.
 
-Problemas que posee la técnica de Shadow Mapping
+## Problemas que tiene la técnica de Shadow Mapping
 
 Los principales problemas que tienen los mapas de sombras yacen en el acné de sombra (en inglés `shadow acne`) que representa una fluctuación entre los pixeles que se encuentran iluminados y los que se encuentran en sombra por falta de precisión de la aritmética punto flotante al consultar los valores de profundidad almacenados en la textura. Por otro lado, está el `aliasing` que hace que la sombra no tenga bordes lisos sino escalonados.
 
